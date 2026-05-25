@@ -1,0 +1,353 @@
+openapi: 3.0.3
+info:
+  title: FawryPay Server API
+  version: '1.0'
+  description: |
+    Server-to-server REST API for FawryPay, the e-payment platform operated by
+    Fawry (Egypt). Supports card payments (incl. 3DS), e-wallet payments, payment
+    requests using a FawryPay reference number, refunds, payment status queries,
+    and cancellation of unpaid orders. Authentication is via a per-merchant
+    `merchantCode` plus a SHA-256 signature computed from the request body and a
+    shared `secureKey`.
+  contact:
+    name: FawryPay Developer Support
+    url: https://developer.fawrystaging.com/contact-us
+  license:
+    name: Proprietary
+    url: https://fawry.com/
+servers:
+  - url: https://atfawry.fawrystaging.com
+    description: Staging
+  - url: https://www.atfawry.com
+    description: Production
+tags:
+  - name: Payments
+    description: Create payment requests and charge cards or wallets.
+  - name: Refunds
+    description: Refund settled FawryPay orders.
+  - name: Orders
+    description: Inspect or cancel FawryPay orders.
+  - name: Installments
+    description: Bank installment plans available for a merchant.
+paths:
+  /ECommerceWeb/Fawry/payments/charge:
+    post:
+      operationId: createCharge
+      tags:
+        - Payments
+      summary: Create a Charge
+      description: |
+        Create a payment request. Used both for card / e-wallet payments and
+        for generating a FawryPay reference number that the customer can pay
+        at a Fawry retail POS, ATM, or banking channel. The `paymentMethod`
+        field selects the channel (e.g. `PayAtFawry`, `CARD`, `MWALLET`).
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ChargeRequest'
+      responses:
+        '200':
+          description: Charge accepted.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ChargeResponse'
+        '400':
+          description: Invalid request.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /ECommerceWeb/Fawry/payments/refund:
+    post:
+      operationId: refundCharge
+      tags:
+        - Refunds
+      summary: Refund a Paid Order
+      description: |
+        Refund all or part of a previously paid FawryPay order. The
+        `refundAmount` must not exceed the original payment amount and the
+        order must be in a refundable status.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RefundRequest'
+      responses:
+        '200':
+          description: Refund processed.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StatusResponse'
+        '400':
+          description: Refund rejected.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /ECommerceWeb/api/orders/cancel-unpaid-order:
+    post:
+      operationId: cancelUnpaidOrder
+      tags:
+        - Orders
+      summary: Cancel an Unpaid Order
+      description: |
+        Cancel a FawryPay order that has not yet been paid. Use the Refund API
+        instead if the order has already been settled.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CancelRequest'
+      responses:
+        '200':
+          description: Order cancelled.
+        '400':
+          description: Cancellation rejected.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /ECommerceWeb/Fawry/payments/status/v2:
+    get:
+      operationId: getPaymentStatus
+      tags:
+        - Orders
+      summary: Get Payment Status
+      description: |
+        Pull the current status of a FawryPay order by merchant code and
+        merchant reference number. Equivalent payload is also delivered via
+        the server notification v2 push webhook configured per merchant.
+      parameters:
+        - in: query
+          name: merchantCode
+          required: true
+          schema:
+            type: string
+        - in: query
+          name: merchantRefNumber
+          required: true
+          schema:
+            type: string
+        - in: query
+          name: signature
+          required: true
+          description: SHA-256 hash of `merchantCode + merchantRefNumber + secureKey`.
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Current order status.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ChargeResponse'
+  /ECommerceWeb/api/merchant/installment-plans:
+    get:
+      operationId: listInstallmentPlans
+      tags:
+        - Installments
+      summary: List Installment Plans
+      description: |
+        Return the bank installment plans configured for the calling merchant
+        account, including supported banks, tenors, and minimum order values.
+      parameters:
+        - in: query
+          name: merchantCode
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Installment plans.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/InstallmentPlan'
+components:
+  schemas:
+    ChargeItem:
+      type: object
+      required: [itemId, description, price, quantity]
+      properties:
+        itemId:
+          type: string
+        description:
+          type: string
+        price:
+          type: number
+          format: float
+        quantity:
+          type: number
+          format: float
+    ChargeRequest:
+      type: object
+      required:
+        - merchantCode
+        - merchantRefNum
+        - paymentMethod
+        - customerMobile
+        - customerEmail
+        - amount
+        - description
+        - language
+        - chargeItems
+        - signature
+      properties:
+        merchantCode:
+          type: string
+          description: Merchant code issued by Fawry during onboarding.
+        merchantRefNum:
+          type: string
+          description: Unique merchant-side reference for this order.
+        customerProfileId:
+          type: string
+          description: Optional customer profile identifier on the merchant side.
+        paymentMethod:
+          type: string
+          description: Payment channel.
+          enum: [PayAtFawry, CARD, MWALLET, VALU, CASH_ON_DELIVERY]
+        customerName:
+          type: string
+        customerMobile:
+          type: string
+        customerEmail:
+          type: string
+          format: email
+        amount:
+          type: number
+          format: float
+        currencyCode:
+          type: string
+          default: EGP
+        paymentExpiry:
+          type: integer
+          format: int64
+          description: Payment expiry as epoch milliseconds.
+        description:
+          type: string
+        language:
+          type: string
+          enum: [ar-eg, en-gb]
+        chargeItems:
+          type: array
+          items:
+            $ref: '#/components/schemas/ChargeItem'
+        orderWebHookUrl:
+          type: string
+          format: uri
+        signature:
+          type: string
+          description: SHA-256 of `merchantCode + merchantRefNum + customerProfileId + paymentMethod + amount(2dp) + secureKey`.
+    ChargeResponse:
+      type: object
+      properties:
+        type:
+          type: string
+          example: ChargeResponse
+        referenceNumber:
+          type: string
+        merchantRefNumber:
+          type: string
+        orderAmount:
+          type: number
+          format: float
+        paymentAmount:
+          type: number
+          format: float
+        fawryFees:
+          type: number
+          format: float
+        paymentMethod:
+          type: string
+        orderStatus:
+          type: string
+        paymentTime:
+          type: integer
+          format: int64
+        customerMobile:
+          type: string
+        customerMail:
+          type: string
+        customerProfileId:
+          type: string
+        signature:
+          type: string
+        statusCode:
+          type: integer
+        statusDescription:
+          type: string
+    RefundRequest:
+      type: object
+      required: [merchantCode, referenceNumber, refundAmount, signature]
+      properties:
+        merchantCode:
+          type: string
+        referenceNumber:
+          type: string
+          description: FawryPay order reference number.
+        refundAmount:
+          type: number
+          format: float
+        reason:
+          type: string
+        signature:
+          type: string
+          description: SHA-256 of `merchantCode + referenceNumber + refundAmount(2dp) + reason + secureKey`.
+    CancelRequest:
+      type: object
+      required: [merchantAccount, orderRefNo, lang, signature]
+      properties:
+        merchantAccount:
+          type: string
+        orderRefNo:
+          type: string
+        lang:
+          type: string
+          enum: [ar-eg, en-gb]
+        signature:
+          type: string
+          description: SHA-256 of `orderRefNo + merchantAccount + lang + secureKey`.
+    StatusResponse:
+      type: object
+      properties:
+        type:
+          type: string
+        statusCode:
+          type: integer
+          example: 200
+        statusDescription:
+          type: string
+          example: Operation done successfully
+    InstallmentPlan:
+      type: object
+      properties:
+        planId:
+          type: string
+        bankName:
+          type: string
+        tenor:
+          type: integer
+          description: Number of installment months.
+        minAmount:
+          type: number
+          format: float
+        feesPercent:
+          type: number
+          format: float
+    Error:
+      type: object
+      properties:
+        code:
+          type: string
+        description:
+          type: string
+        reason:
+          type: string
