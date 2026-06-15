@@ -1,0 +1,686 @@
+{
+  "item": [
+    {
+      "id": "4b840a7c-c3a0-4e77-a1f4-ad4a0852130e",
+      "name": "Payments",
+      "description": {
+        "content": "Create payment requests and charge cards or wallets.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "ab2a7bec-705e-46d7-8d32-bb65ef3a180a",
+          "name": "Create a Charge",
+          "request": {
+            "name": "Create a Charge",
+            "description": {
+              "content": "Create a payment request. Used both for card / e-wallet payments and\nfor generating a FawryPay reference number that the customer can pay\nat a Fawry retail POS, ATM, or banking channel. The `paymentMethod`\nfield selects the channel (e.g. `PayAtFawry`, `CARD`, `MWALLET`).\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "ECommerceWeb",
+                "Fawry",
+                "payments",
+                "charge"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"merchantCode\": \"<string>\",\n  \"merchantRefNum\": \"<string>\",\n  \"paymentMethod\": \"<string>\",\n  \"customerMobile\": \"<string>\",\n  \"customerEmail\": \"<email>\",\n  \"amount\": \"<float>\",\n  \"description\": \"<string>\",\n  \"language\": \"<string>\",\n  \"chargeItems\": [\n    {\n      \"itemId\": \"<string>\",\n      \"description\": \"<string>\",\n      \"price\": \"<float>\",\n      \"quantity\": \"<float>\"\n    },\n    {\n      \"itemId\": \"<string>\",\n      \"description\": \"<string>\",\n      \"price\": \"<float>\",\n      \"quantity\": \"<float>\"\n    }\n  ],\n  \"signature\": \"<string>\",\n  \"customerProfileId\": \"<string>\",\n  \"customerName\": \"<string>\",\n  \"currencyCode\": \"EGP\",\n  \"paymentExpiry\": \"<long>\",\n  \"orderWebHookUrl\": \"<uri>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "71a5f5b6-5ac7-4d97-81aa-e65d956d5975",
+              "name": "Charge accepted.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ECommerceWeb",
+                    "Fawry",
+                    "payments",
+                    "charge"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"merchantCode\": \"<string>\",\n  \"merchantRefNum\": \"<string>\",\n  \"paymentMethod\": \"<string>\",\n  \"customerMobile\": \"<string>\",\n  \"customerEmail\": \"<email>\",\n  \"amount\": \"<float>\",\n  \"description\": \"<string>\",\n  \"language\": \"<string>\",\n  \"chargeItems\": [\n    {\n      \"itemId\": \"<string>\",\n      \"description\": \"<string>\",\n      \"price\": \"<float>\",\n      \"quantity\": \"<float>\"\n    },\n    {\n      \"itemId\": \"<string>\",\n      \"description\": \"<string>\",\n      \"price\": \"<float>\",\n      \"quantity\": \"<float>\"\n    }\n  ],\n  \"signature\": \"<string>\",\n  \"customerProfileId\": \"<string>\",\n  \"customerName\": \"<string>\",\n  \"currencyCode\": \"EGP\",\n  \"paymentExpiry\": \"<long>\",\n  \"orderWebHookUrl\": \"<uri>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"ChargeResponse\",\n  \"referenceNumber\": \"string\",\n  \"merchantRefNumber\": \"string\",\n  \"orderAmount\": 4647.00039838559,\n  \"paymentAmount\": 600.0009965207643,\n  \"fawryFees\": 2109.4998985473444,\n  \"paymentMethod\": \"string\",\n  \"orderStatus\": \"string\",\n  \"paymentTime\": 815,\n  \"customerMobile\": \"string\",\n  \"customerMail\": \"string\",\n  \"customerProfileId\": \"string\",\n  \"signature\": \"string\",\n  \"statusCode\": 1904,\n  \"statusDescription\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7ae26e42-5c7e-495f-8294-ce521611fc22",
+              "name": "Invalid request.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ECommerceWeb",
+                    "Fawry",
+                    "payments",
+                    "charge"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"merchantCode\": \"<string>\",\n  \"merchantRefNum\": \"<string>\",\n  \"paymentMethod\": \"<string>\",\n  \"customerMobile\": \"<string>\",\n  \"customerEmail\": \"<email>\",\n  \"amount\": \"<float>\",\n  \"description\": \"<string>\",\n  \"language\": \"<string>\",\n  \"chargeItems\": [\n    {\n      \"itemId\": \"<string>\",\n      \"description\": \"<string>\",\n      \"price\": \"<float>\",\n      \"quantity\": \"<float>\"\n    },\n    {\n      \"itemId\": \"<string>\",\n      \"description\": \"<string>\",\n      \"price\": \"<float>\",\n      \"quantity\": \"<float>\"\n    }\n  ],\n  \"signature\": \"<string>\",\n  \"customerProfileId\": \"<string>\",\n  \"customerName\": \"<string>\",\n  \"currencyCode\": \"EGP\",\n  \"paymentExpiry\": \"<long>\",\n  \"orderWebHookUrl\": \"<uri>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"string\",\n  \"description\": \"string\",\n  \"reason\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "c21b7fb1-f684-4c5c-877d-60a4a41917ad",
+      "name": "Refunds",
+      "description": {
+        "content": "Refund settled FawryPay orders.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "6af46ea6-420c-4a30-b072-f0bdd2c56d5e",
+          "name": "Refund a Paid Order",
+          "request": {
+            "name": "Refund a Paid Order",
+            "description": {
+              "content": "Refund all or part of a previously paid FawryPay order. The\n`refundAmount` must not exceed the original payment amount and the\norder must be in a refundable status.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "ECommerceWeb",
+                "Fawry",
+                "payments",
+                "refund"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"merchantCode\": \"<string>\",\n  \"referenceNumber\": \"<string>\",\n  \"refundAmount\": \"<float>\",\n  \"signature\": \"<string>\",\n  \"reason\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "ef8ed1d9-688a-4189-8c73-c44b98c08875",
+              "name": "Refund processed.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ECommerceWeb",
+                    "Fawry",
+                    "payments",
+                    "refund"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"merchantCode\": \"<string>\",\n  \"referenceNumber\": \"<string>\",\n  \"refundAmount\": \"<float>\",\n  \"signature\": \"<string>\",\n  \"reason\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"string\",\n  \"statusCode\": 200,\n  \"statusDescription\": \"Operation done successfully\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6fb8440e-ae2e-4b51-8e8a-5ab201b2d1b7",
+              "name": "Refund rejected.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ECommerceWeb",
+                    "Fawry",
+                    "payments",
+                    "refund"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"merchantCode\": \"<string>\",\n  \"referenceNumber\": \"<string>\",\n  \"refundAmount\": \"<float>\",\n  \"signature\": \"<string>\",\n  \"reason\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"string\",\n  \"description\": \"string\",\n  \"reason\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "f854ea2c-6d48-4e33-8eae-e80436712bf0",
+      "name": "Orders",
+      "description": {
+        "content": "Inspect or cancel FawryPay orders.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "30da49bb-62ac-4c0a-ba74-964e03560540",
+          "name": "Cancel an Unpaid Order",
+          "request": {
+            "name": "Cancel an Unpaid Order",
+            "description": {
+              "content": "Cancel a FawryPay order that has not yet been paid. Use the Refund API\ninstead if the order has already been settled.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "ECommerceWeb",
+                "api",
+                "orders",
+                "cancel-unpaid-order"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"merchantAccount\": \"<string>\",\n  \"orderRefNo\": \"<string>\",\n  \"lang\": \"<string>\",\n  \"signature\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "d51cdf05-9d5e-421c-97c2-5c6355a099d8",
+              "name": "Order cancelled.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ECommerceWeb",
+                    "api",
+                    "orders",
+                    "cancel-unpaid-order"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"merchantAccount\": \"<string>\",\n  \"orderRefNo\": \"<string>\",\n  \"lang\": \"<string>\",\n  \"signature\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "cf380e4b-649c-4bee-930d-c123c8474422",
+              "name": "Cancellation rejected.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ECommerceWeb",
+                    "api",
+                    "orders",
+                    "cancel-unpaid-order"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"merchantAccount\": \"<string>\",\n  \"orderRefNo\": \"<string>\",\n  \"lang\": \"<string>\",\n  \"signature\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"string\",\n  \"description\": \"string\",\n  \"reason\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "6c245c8c-b749-4827-a7ca-91fce1f32516",
+          "name": "Get Payment Status",
+          "request": {
+            "name": "Get Payment Status",
+            "description": {
+              "content": "Pull the current status of a FawryPay order by merchant code and\nmerchant reference number. Equivalent payload is also delivered via\nthe server notification v2 push webhook configured per merchant.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "ECommerceWeb",
+                "Fawry",
+                "payments",
+                "status",
+                "v2"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "merchantCode",
+                  "value": "<string>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "merchantRefNumber",
+                  "value": "<string>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "signature",
+                  "value": "<string>",
+                  "description": "(Required) SHA-256 hash of `merchantCode + merchantRefNumber + secureKey`."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "e30d2a23-a9b0-476a-a800-e8883790ca18",
+              "name": "Current order status.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ECommerceWeb",
+                    "Fawry",
+                    "payments",
+                    "status",
+                    "v2"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "merchantCode",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "merchantRefNumber",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "signature",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"ChargeResponse\",\n  \"referenceNumber\": \"string\",\n  \"merchantRefNumber\": \"string\",\n  \"orderAmount\": 4647.00039838559,\n  \"paymentAmount\": 600.0009965207643,\n  \"fawryFees\": 2109.4998985473444,\n  \"paymentMethod\": \"string\",\n  \"orderStatus\": \"string\",\n  \"paymentTime\": 815,\n  \"customerMobile\": \"string\",\n  \"customerMail\": \"string\",\n  \"customerProfileId\": \"string\",\n  \"signature\": \"string\",\n  \"statusCode\": 1904,\n  \"statusDescription\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "afd2f315-3261-4b45-a1ae-7c3ae9d08308",
+      "name": "Installments",
+      "description": {
+        "content": "Bank installment plans available for a merchant.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "b2633749-a367-4986-a71e-0a2a7c09dffc",
+          "name": "List Installment Plans",
+          "request": {
+            "name": "List Installment Plans",
+            "description": {
+              "content": "Return the bank installment plans configured for the calling merchant\naccount, including supported banks, tenors, and minimum order values.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "ECommerceWeb",
+                "api",
+                "merchant",
+                "installment-plans"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "merchantCode",
+                  "value": "<string>",
+                  "description": "(Required) "
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "09df4d95-f600-4c68-831a-296ab0148a76",
+              "name": "Installment plans.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ECommerceWeb",
+                    "api",
+                    "merchant",
+                    "installment-plans"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "merchantCode",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"planId\": \"string\",\n    \"bankName\": \"string\",\n    \"tenor\": 6462,\n    \"minAmount\": 2296.0717186478687,\n    \"feesPercent\": 6158.19620460118\n  },\n  {\n    \"planId\": \"string\",\n    \"bankName\": \"string\",\n    \"tenor\": 7303,\n    \"minAmount\": 3893.2772157033437,\n    \"feesPercent\": 4855.797861660153\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://atfawry.fawrystaging.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "2859ca61-3776-4e1d-8938-8ee6e145da3a",
+    "name": "FawryPay Server API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Server-to-server REST API for FawryPay, the e-payment platform operated by\nFawry (Egypt). Supports card payments (incl. 3DS), e-wallet payments, payment\nrequests using a FawryPay reference number, refunds, payment status queries,\nand cancellation of unpaid orders. Authentication is via a per-merchant\n`merchantCode` plus a SHA-256 signature computed from the request body and a\nshared `secureKey`.\n\n\nContact Support:\n Name: FawryPay Developer Support",
+      "type": "text/plain"
+    }
+  }
+}

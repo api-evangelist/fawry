@@ -1,0 +1,134 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "FawryPay Server API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Payments",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create a Charge",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://atfawry.fawrystaging.com/ECommerceWeb/Fawry/payments/charge",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a payment request. Used both for card / e-wallet payments and\nfor generating a FawryPay reference number that the customer can pay\nat a Fawry retail POS, ATM, or banking channel. The `paymentMethod`\nfield selects the channel (e.g. `PayAtFawry`, `CARD`, `MWALLET`).\n"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Refunds",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Refund a Paid Order",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://atfawry.fawrystaging.com/ECommerceWeb/Fawry/payments/refund",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Refund all or part of a previously paid FawryPay order. The\n`refundAmount` must not exceed the original payment amount and the\norder must be in a refundable status.\n"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Orders",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Cancel an Unpaid Order",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://atfawry.fawrystaging.com/ECommerceWeb/api/orders/cancel-unpaid-order",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Cancel a FawryPay order that has not yet been paid. Use the Refund API\ninstead if the order has already been settled.\n"
+        },
+        {
+          "info": {
+            "name": "Get Payment Status",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://atfawry.fawrystaging.com/ECommerceWeb/Fawry/payments/status/v2",
+            "params": [
+              {
+                "name": "merchantCode",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "merchantRefNumber",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "signature",
+                "value": "",
+                "type": "query",
+                "description": "SHA-256 hash of `merchantCode + merchantRefNumber + secureKey`."
+              }
+            ]
+          },
+          "docs": "Pull the current status of a FawryPay order by merchant code and\nmerchant reference number. Equivalent payload is also delivered via\nthe server notification v2 push webhook configured per merchant.\n"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Installments",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Installment Plans",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://atfawry.fawrystaging.com/ECommerceWeb/api/merchant/installment-plans",
+            "params": [
+              {
+                "name": "merchantCode",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Return the bank installment plans configured for the calling merchant\naccount, including supported banks, tenors, and minimum order values.\n"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
