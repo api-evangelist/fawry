@@ -95,7 +95,7 @@ common:
   - type: Documentation
     name: Pay By Link
     url: https://developer.fawrystaging.com/docs/pay-by-link-overview
-  - type: SignUp
+  - type: Signup
     name: Merchant Registration
     url: https://fawrypay.online/merchant/register
   - type: Support
@@ -105,22 +105,22 @@ common:
     url: https://developer.fawrystaging.com/ticket-tracking
   - type: GitHubOrganization
     url: https://github.com/FawryPay
-  - type: SDK
+  - type: SDKs
     name: FawryPaySDK (iOS)
     url: https://github.com/FawryPay/FawryPaySDK
-  - type: SDK
+  - type: SDKs
     name: FawryPaySDK Swift Package Manager (iOS)
     url: https://github.com/FawryPay/FawryPaySPM
-  - type: SDK
+  - type: SDKs
     name: FawryPaySDK-AVL (iOS)
     url: https://github.com/FawryPay/FawryPaySDK-AVL
-  - type: SDK
+  - type: SDKs
     name: FawryPayAVLSPM (iOS SPM)
     url: https://github.com/FawryPay/FawryPayAVLSPM
-  - type: SDK
+  - type: SDKs
     name: FawryPaySDK-Registered (iOS)
     url: https://github.com/FawryPay/FawryPaySDK-Registered
-  - type: SDK
+  - type: SDKs
     name: FawryPaySDK-Microfinance (iOS)
     url: https://github.com/FawryPay/FawryPaySDK-Microfinance
   - type: CodeExamples
