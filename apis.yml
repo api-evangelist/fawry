@@ -72,6 +72,8 @@ apis:
       merchant code and SHA-256 signature over the request body and a
       shared secureKey.
 common:
+  - type: DomainSecurity
+    url: security/fawry-domain-security.yml
   - type: Website
     url: https://fawry.com/
   - type: Portal

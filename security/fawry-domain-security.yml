@@ -1,0 +1,35 @@
+generated: '2026-07-11'
+method: probed
+source: live DNS/TLS/HTTP probes of apis.yml + OpenAPI hosts
+hosts:
+- host: fawry.com
+  https: true
+  tls_version: TLSv1.3
+  cert_expires: Aug 29 17:39:49 2026 GMT
+  hsts: true
+  hsts_max_age: 0
+- host: developer.fawrystaging.com
+  https: true
+  tls_version: TLSv1.2
+  cert_expires: Dec  2 07:27:09 2026 GMT
+  hsts: true
+  hsts_max_age: 16070400
+- host: atfawry.fawrystaging.com
+  https: true
+  tls_version: TLSv1.2
+  cert_expires: Dec  2 07:27:09 2026 GMT
+  hsts: true
+  hsts_max_age: 16070400
+domains:
+- domain: fawry.com
+  dnssec: false
+  caa: []
+  spf: true
+  dmarc: true
+  dmarc_policy: none
+- domain: fawrystaging.com
+  dnssec: false
+  caa: []
+  spf: true
+  dmarc: true
+  dmarc_policy: reject
