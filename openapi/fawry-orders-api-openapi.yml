@@ -1,0 +1,164 @@
+openapi: 3.0.3
+info:
+  title: FawryPay Server Installments Orders API
+  version: '1.0'
+  description: 'Server-to-server REST API for FawryPay, the e-payment platform operated by
+
+    Fawry (Egypt). Supports card payments (incl. 3DS), e-wallet payments, payment
+
+    requests using a FawryPay reference number, refunds, payment status queries,
+
+    and cancellation of unpaid orders. Authentication is via a per-merchant
+
+    `merchantCode` plus a SHA-256 signature computed from the request body and a
+
+    shared `secureKey`.
+
+    '
+  contact:
+    name: FawryPay Developer Support
+    url: https://developer.fawrystaging.com/contact-us
+  license:
+    name: Proprietary
+    url: https://fawry.com/
+servers:
+- url: https://atfawry.fawrystaging.com
+  description: Staging
+- url: https://www.atfawry.com
+  description: Production
+tags:
+- name: Orders
+  description: Inspect or cancel FawryPay orders.
+paths:
+  /ECommerceWeb/api/orders/cancel-unpaid-order:
+    post:
+      operationId: cancelUnpaidOrder
+      tags:
+      - Orders
+      summary: Cancel an Unpaid Order
+      description: 'Cancel a FawryPay order that has not yet been paid. Use the Refund API
+
+        instead if the order has already been settled.
+
+        '
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CancelRequest'
+      responses:
+        '200':
+          description: Order cancelled.
+        '400':
+          description: Cancellation rejected.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /ECommerceWeb/Fawry/payments/status/v2:
+    get:
+      operationId: getPaymentStatus
+      tags:
+      - Orders
+      summary: Get Payment Status
+      description: 'Pull the current status of a FawryPay order by merchant code and
+
+        merchant reference number. Equivalent payload is also delivered via
+
+        the server notification v2 push webhook configured per merchant.
+
+        '
+      parameters:
+      - in: query
+        name: merchantCode
+        required: true
+        schema:
+          type: string
+      - in: query
+        name: merchantRefNumber
+        required: true
+        schema:
+          type: string
+      - in: query
+        name: signature
+        required: true
+        description: SHA-256 hash of `merchantCode + merchantRefNumber + secureKey`.
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Current order status.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ChargeResponse'
+components:
+  schemas:
+    Error:
+      type: object
+      properties:
+        code:
+          type: string
+        description:
+          type: string
+        reason:
+          type: string
+    CancelRequest:
+      type: object
+      required:
+      - merchantAccount
+      - orderRefNo
+      - lang
+      - signature
+      properties:
+        merchantAccount:
+          type: string
+        orderRefNo:
+          type: string
+        lang:
+          type: string
+          enum:
+          - ar-eg
+          - en-gb
+        signature:
+          type: string
+          description: SHA-256 of `orderRefNo + merchantAccount + lang + secureKey`.
+    ChargeResponse:
+      type: object
+      properties:
+        type:
+          type: string
+          example: ChargeResponse
+        referenceNumber:
+          type: string
+        merchantRefNumber:
+          type: string
+        orderAmount:
+          type: number
+          format: float
+        paymentAmount:
+          type: number
+          format: float
+        fawryFees:
+          type: number
+          format: float
+        paymentMethod:
+          type: string
+        orderStatus:
+          type: string
+        paymentTime:
+          type: integer
+          format: int64
+        customerMobile:
+          type: string
+        customerMail:
+          type: string
+        customerProfileId:
+          type: string
+        signature:
+          type: string
+        statusCode:
+          type: integer
+        statusDescription:
+          type: string

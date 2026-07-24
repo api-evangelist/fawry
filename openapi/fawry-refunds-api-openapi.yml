@@ -1,0 +1,107 @@
+openapi: 3.0.3
+info:
+  title: FawryPay Server Installments Refunds API
+  version: '1.0'
+  description: 'Server-to-server REST API for FawryPay, the e-payment platform operated by
+
+    Fawry (Egypt). Supports card payments (incl. 3DS), e-wallet payments, payment
+
+    requests using a FawryPay reference number, refunds, payment status queries,
+
+    and cancellation of unpaid orders. Authentication is via a per-merchant
+
+    `merchantCode` plus a SHA-256 signature computed from the request body and a
+
+    shared `secureKey`.
+
+    '
+  contact:
+    name: FawryPay Developer Support
+    url: https://developer.fawrystaging.com/contact-us
+  license:
+    name: Proprietary
+    url: https://fawry.com/
+servers:
+- url: https://atfawry.fawrystaging.com
+  description: Staging
+- url: https://www.atfawry.com
+  description: Production
+tags:
+- name: Refunds
+  description: Refund settled FawryPay orders.
+paths:
+  /ECommerceWeb/Fawry/payments/refund:
+    post:
+      operationId: refundCharge
+      tags:
+      - Refunds
+      summary: Refund a Paid Order
+      description: 'Refund all or part of a previously paid FawryPay order. The
+
+        `refundAmount` must not exceed the original payment amount and the
+
+        order must be in a refundable status.
+
+        '
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RefundRequest'
+      responses:
+        '200':
+          description: Refund processed.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StatusResponse'
+        '400':
+          description: Refund rejected.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+components:
+  schemas:
+    RefundRequest:
+      type: object
+      required:
+      - merchantCode
+      - referenceNumber
+      - refundAmount
+      - signature
+      properties:
+        merchantCode:
+          type: string
+        referenceNumber:
+          type: string
+          description: FawryPay order reference number.
+        refundAmount:
+          type: number
+          format: float
+        reason:
+          type: string
+        signature:
+          type: string
+          description: SHA-256 of `merchantCode + referenceNumber + refundAmount(2dp) + reason + secureKey`.
+    Error:
+      type: object
+      properties:
+        code:
+          type: string
+        description:
+          type: string
+        reason:
+          type: string
+    StatusResponse:
+      type: object
+      properties:
+        type:
+          type: string
+        statusCode:
+          type: integer
+          example: 200
+        statusDescription:
+          type: string
+          example: Operation done successfully

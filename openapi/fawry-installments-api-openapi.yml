@@ -1,0 +1,76 @@
+openapi: 3.0.3
+info:
+  title: FawryPay Server Installments API
+  version: '1.0'
+  description: 'Server-to-server REST API for FawryPay, the e-payment platform operated by
+
+    Fawry (Egypt). Supports card payments (incl. 3DS), e-wallet payments, payment
+
+    requests using a FawryPay reference number, refunds, payment status queries,
+
+    and cancellation of unpaid orders. Authentication is via a per-merchant
+
+    `merchantCode` plus a SHA-256 signature computed from the request body and a
+
+    shared `secureKey`.
+
+    '
+  contact:
+    name: FawryPay Developer Support
+    url: https://developer.fawrystaging.com/contact-us
+  license:
+    name: Proprietary
+    url: https://fawry.com/
+servers:
+- url: https://atfawry.fawrystaging.com
+  description: Staging
+- url: https://www.atfawry.com
+  description: Production
+tags:
+- name: Installments
+  description: Bank installment plans available for a merchant.
+paths:
+  /ECommerceWeb/api/merchant/installment-plans:
+    get:
+      operationId: listInstallmentPlans
+      tags:
+      - Installments
+      summary: List Installment Plans
+      description: 'Return the bank installment plans configured for the calling merchant
+
+        account, including supported banks, tenors, and minimum order values.
+
+        '
+      parameters:
+      - in: query
+        name: merchantCode
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Installment plans.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/InstallmentPlan'
+components:
+  schemas:
+    InstallmentPlan:
+      type: object
+      properties:
+        planId:
+          type: string
+        bankName:
+          type: string
+        tenor:
+          type: integer
+          description: Number of installment months.
+        minAmount:
+          type: number
+          format: float
+        feesPercent:
+          type: number
+          format: float
