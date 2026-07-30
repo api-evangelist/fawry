@@ -1,7 +1,18 @@
 aid: fawry
 name: Fawry
 url: https://raw.githubusercontent.com/api-evangelist/fawry/refs/heads/main/apis.yml
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+accessModel:
+  pricing: unknown
+  onboarding: unknown
+  trial: false
+  try_now: false
+  public: false
+  label: Unknown
+  confidence: low
+  source: []
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/fawry.png
 description: >-
   Fawry is Cairo-based Egypt's leading provider of e-payments and digital
   finance solutions, operating a nationwide network for card, e-wallet, and
@@ -43,34 +54,82 @@ created: '2026-05-24'
 modified: '2026-05-24'
 specificationVersion: '0.20'
 apis:
-  - aid: fawry:fawrypay-server-api
-    name: FawryPay Server API
-    tags:
-      - Payments
-      - Refunds
-      - Installments
-      - E-Commerce
-    humanURL: https://developer.fawrystaging.com/docs/server-apis/server-apis-overview
-    properties:
-      - type: Documentation
-        url: https://developer.fawrystaging.com/docs/server-apis/server-apis-overview
-      - type: Documentation
-        url: https://developer.fawrystaging.com/docs/server-apis/create-payment-refno-apis
-      - type: Documentation
-        url: https://developer.fawrystaging.com/docs/server-apis/refund-issue-api
-      - type: Documentation
-        url: https://developer.fawrystaging.com/docs/server-apis/cancel-payment-api
-      - type: Documentation
-        url: https://developer.fawrystaging.com/docs/server-apis/auth-capture-payment-apis
-      - type: OpenAPI
-        url: openapi/fawrypay-server-api-openapi.yml
-    description: >-
-      Server-to-server REST API for creating FawryPay charges (card, 3DS,
-      e-wallet, ValU, bank installments, PayAtFawry reference numbers),
-      issuing refunds, cancelling unpaid orders, querying payment status,
-      and listing bank installment plans. Authenticated per request via a
-      merchant code and SHA-256 signature over the request body and a
-      shared secureKey.
+- aid: fawry:fawry-installments-api
+  name: Fawry Installments API
+  description: Bank installment plans available for a merchant.
+  humanURL: https://developer.fawrystaging.com/docs/server-apis/server-apis-overview
+  tags:
+  - Installments
+  properties:
+  - type: OpenAPI
+    url: openapi/fawry-installments-api-openapi.yml
+  - type: Documentation
+    url: https://developer.fawrystaging.com/docs/server-apis/server-apis-overview
+  - type: Documentation
+    url: https://developer.fawrystaging.com/docs/server-apis/create-payment-refno-apis
+  - type: Documentation
+    url: https://developer.fawrystaging.com/docs/server-apis/refund-issue-api
+  - type: Documentation
+    url: https://developer.fawrystaging.com/docs/server-apis/cancel-payment-api
+  - type: Documentation
+    url: https://developer.fawrystaging.com/docs/server-apis/auth-capture-payment-apis
+- aid: fawry:fawry-orders-api
+  name: Fawry Orders API
+  description: Inspect or cancel FawryPay orders.
+  humanURL: https://developer.fawrystaging.com/docs/server-apis/server-apis-overview
+  tags:
+  - Orders
+  properties:
+  - type: OpenAPI
+    url: openapi/fawry-orders-api-openapi.yml
+  - type: Documentation
+    url: https://developer.fawrystaging.com/docs/server-apis/server-apis-overview
+  - type: Documentation
+    url: https://developer.fawrystaging.com/docs/server-apis/create-payment-refno-apis
+  - type: Documentation
+    url: https://developer.fawrystaging.com/docs/server-apis/refund-issue-api
+  - type: Documentation
+    url: https://developer.fawrystaging.com/docs/server-apis/cancel-payment-api
+  - type: Documentation
+    url: https://developer.fawrystaging.com/docs/server-apis/auth-capture-payment-apis
+- aid: fawry:fawry-payments-api
+  name: Fawry Payments API
+  description: Create payment requests and charge cards or wallets.
+  humanURL: https://developer.fawrystaging.com/docs/server-apis/server-apis-overview
+  tags:
+  - Payments
+  properties:
+  - type: OpenAPI
+    url: openapi/fawry-payments-api-openapi.yml
+  - type: Documentation
+    url: https://developer.fawrystaging.com/docs/server-apis/server-apis-overview
+  - type: Documentation
+    url: https://developer.fawrystaging.com/docs/server-apis/create-payment-refno-apis
+  - type: Documentation
+    url: https://developer.fawrystaging.com/docs/server-apis/refund-issue-api
+  - type: Documentation
+    url: https://developer.fawrystaging.com/docs/server-apis/cancel-payment-api
+  - type: Documentation
+    url: https://developer.fawrystaging.com/docs/server-apis/auth-capture-payment-apis
+- aid: fawry:fawry-refunds-api
+  name: Fawry Refunds API
+  description: Refund settled FawryPay orders.
+  humanURL: https://developer.fawrystaging.com/docs/server-apis/server-apis-overview
+  tags:
+  - Refunds
+  properties:
+  - type: OpenAPI
+    url: openapi/fawry-refunds-api-openapi.yml
+  - type: Documentation
+    url: https://developer.fawrystaging.com/docs/server-apis/server-apis-overview
+  - type: Documentation
+    url: https://developer.fawrystaging.com/docs/server-apis/create-payment-refno-apis
+  - type: Documentation
+    url: https://developer.fawrystaging.com/docs/server-apis/refund-issue-api
+  - type: Documentation
+    url: https://developer.fawrystaging.com/docs/server-apis/cancel-payment-api
+  - type: Documentation
+    url: https://developer.fawrystaging.com/docs/server-apis/auth-capture-payment-apis
 common:
   - type: AgenticAccess
     url: agentic-access/fawry-agentic-access.yml
