@@ -1,0 +1,120 @@
+{
+  "item": [
+    {
+      "id": "6f87e0ef-cf0e-4437-8aaf-bbdc9303a97f",
+      "name": "Installments",
+      "description": {
+        "content": "Bank installment plans available for a merchant.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "115a27d7-17be-4d9a-b1ff-03d37c1681da",
+          "name": "List Installment Plans",
+          "request": {
+            "name": "List Installment Plans",
+            "description": {
+              "content": "Return the bank installment plans configured for the calling merchant\naccount, including supported banks, tenors, and minimum order values.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "ECommerceWeb",
+                "api",
+                "merchant",
+                "installment-plans"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "merchantCode",
+                  "value": "<string>",
+                  "description": "(Required) "
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "a7c239a1-ff29-4488-aa5e-a1d08f34468f",
+              "name": "Installment plans.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ECommerceWeb",
+                    "api",
+                    "merchant",
+                    "installment-plans"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "merchantCode",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"planId\": \"string\",\n    \"bankName\": \"string\",\n    \"tenor\": 7411,\n    \"minAmount\": 2001.2219107767237,\n    \"feesPercent\": 861.1130221736618\n  },\n  {\n    \"planId\": \"string\",\n    \"bankName\": \"string\",\n    \"tenor\": 3174,\n    \"minAmount\": 2279.536147045118,\n    \"feesPercent\": 6639.079396773251\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://atfawry.fawrystaging.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "5518995c-613c-43eb-8c5f-41f886d23d39",
+    "name": "FawryPay Server Installments API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Server-to-server REST API for FawryPay, the e-payment platform operated by\nFawry (Egypt). Supports card payments (incl. 3DS), e-wallet payments, payment\nrequests using a FawryPay reference number, refunds, payment status queries,\nand cancellation of unpaid orders. Authentication is via a per-merchant\n`merchantCode` plus a SHA-256 signature computed from the request body and a\nshared `secureKey`.\n\n\nContact Support:\n Name: FawryPay Developer Support",
+      "type": "text/plain"
+    }
+  }
+}

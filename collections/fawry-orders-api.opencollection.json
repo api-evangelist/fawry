@@ -1,0 +1,62 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "FawryPay Server Installments Orders API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Orders",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Cancel an Unpaid Order",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://atfawry.fawrystaging.com/ECommerceWeb/api/orders/cancel-unpaid-order",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Cancel a FawryPay order that has not yet been paid. Use the Refund API\ninstead if the order has already been settled.\n"
+        },
+        {
+          "info": {
+            "name": "Get Payment Status",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://atfawry.fawrystaging.com/ECommerceWeb/Fawry/payments/status/v2",
+            "params": [
+              {
+                "name": "merchantCode",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "merchantRefNumber",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "signature",
+                "value": "",
+                "type": "query",
+                "description": "SHA-256 hash of `merchantCode + merchantRefNumber + secureKey`."
+              }
+            ]
+          },
+          "docs": "Pull the current status of a FawryPay order by merchant code and\nmerchant reference number. Equivalent payload is also delivered via\nthe server notification v2 push webhook configured per merchant.\n"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

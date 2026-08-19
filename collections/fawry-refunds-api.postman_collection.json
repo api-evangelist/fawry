@@ -1,0 +1,175 @@
+{
+  "item": [
+    {
+      "id": "61f2e531-c65f-4040-bea0-e23e7e65ad59",
+      "name": "Refunds",
+      "description": {
+        "content": "Refund settled FawryPay orders.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "7052bb96-016d-4628-bfb7-669b499ca6f9",
+          "name": "Refund a Paid Order",
+          "request": {
+            "name": "Refund a Paid Order",
+            "description": {
+              "content": "Refund all or part of a previously paid FawryPay order. The\n`refundAmount` must not exceed the original payment amount and the\norder must be in a refundable status.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "ECommerceWeb",
+                "Fawry",
+                "payments",
+                "refund"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"merchantCode\": \"<string>\",\n  \"referenceNumber\": \"<string>\",\n  \"refundAmount\": \"<float>\",\n  \"signature\": \"<string>\",\n  \"reason\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "ecd71aad-22d4-4fe1-853f-9bfe20c58de6",
+              "name": "Refund processed.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ECommerceWeb",
+                    "Fawry",
+                    "payments",
+                    "refund"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"merchantCode\": \"<string>\",\n  \"referenceNumber\": \"<string>\",\n  \"refundAmount\": \"<float>\",\n  \"signature\": \"<string>\",\n  \"reason\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"string\",\n  \"statusCode\": 200,\n  \"statusDescription\": \"Operation done successfully\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1e790671-5251-4f01-a77d-a57af8187af7",
+              "name": "Refund rejected.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ECommerceWeb",
+                    "Fawry",
+                    "payments",
+                    "refund"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"merchantCode\": \"<string>\",\n  \"referenceNumber\": \"<string>\",\n  \"refundAmount\": \"<float>\",\n  \"signature\": \"<string>\",\n  \"reason\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"string\",\n  \"description\": \"string\",\n  \"reason\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://atfawry.fawrystaging.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "af94bd81-1f5e-4ecc-9873-6e9fb037b8ef",
+    "name": "FawryPay Server Installments Refunds API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Server-to-server REST API for FawryPay, the e-payment platform operated by\nFawry (Egypt). Supports card payments (incl. 3DS), e-wallet payments, payment\nrequests using a FawryPay reference number, refunds, payment status queries,\nand cancellation of unpaid orders. Authentication is via a per-merchant\n`merchantCode` plus a SHA-256 signature computed from the request body and a\nshared `secureKey`.\n\n\nContact Support:\n Name: FawryPay Developer Support",
+      "type": "text/plain"
+    }
+  }
+}

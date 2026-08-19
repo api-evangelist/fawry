@@ -1,0 +1,33 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "FawryPay Server Installments Payments API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Payments",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create a Charge",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://atfawry.fawrystaging.com/ECommerceWeb/Fawry/payments/charge",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a payment request. Used both for card / e-wallet payments and\nfor generating a FawryPay reference number that the customer can pay\nat a Fawry retail POS, ATM, or banking channel. The `paymentMethod`\nfield selects the channel (e.g. `PayAtFawry`, `CARD`, `MWALLET`).\n"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

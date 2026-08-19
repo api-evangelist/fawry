@@ -1,0 +1,36 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "FawryPay Server Installments API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Installments",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Installment Plans",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://atfawry.fawrystaging.com/ECommerceWeb/api/merchant/installment-plans",
+            "params": [
+              {
+                "name": "merchantCode",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Return the bank installment plans configured for the calling merchant\naccount, including supported banks, tenors, and minimum order values.\n"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

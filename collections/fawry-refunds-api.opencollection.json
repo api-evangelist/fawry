@@ -1,0 +1,33 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "FawryPay Server Installments Refunds API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Refunds",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Refund a Paid Order",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://atfawry.fawrystaging.com/ECommerceWeb/Fawry/payments/refund",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Refund all or part of a previously paid FawryPay order. The\n`refundAmount` must not exceed the original payment amount and the\norder must be in a refundable status.\n"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
