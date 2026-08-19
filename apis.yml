@@ -52,7 +52,7 @@ tags:
   - WooCommerce
 created: '2026-05-24'
 modified: '2026-05-24'
-specificationVersion: '0.20'
+specificationVersion: '0.23'
 apis:
 - aid: fawry:fawry-installments-api
   name: Fawry Installments API
