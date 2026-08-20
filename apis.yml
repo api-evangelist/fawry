@@ -39,6 +39,26 @@ tags:
   - Cards
   - Wallets
   - Bill Payments
+  - Point-of-Sale
+  - Microfinance
+  - Installments
+  - 3D Secure
+  - Refunds
+  - Webhook
+  - Mobile SDK
+  - E-Commerce Plugins
+  - Magento
+  - Shopify
+  - WooCommerce
+tags_raw:
+  - Payments
+  - E-Payments
+  - Digital Finance
+  - Fintech
+  - Egypt
+  - Cards
+  - Wallets
+  - Bill Payments
   - POS
   - Micro-Finance
   - Installments
@@ -78,6 +98,8 @@ apis:
   description: Inspect or cancel FawryPay orders.
   humanURL: https://developer.fawrystaging.com/docs/server-apis/server-apis-overview
   tags:
+  - Order
+  tags_raw:
   - Orders
   properties:
   - type: OpenAPI
