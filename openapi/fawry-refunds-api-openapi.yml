@@ -1,6 +1,6 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: FawryPay Server Installments Refunds API
+  title: FawryPay Server Refunds API
   version: '1.0'
   description: 'Server-to-server REST API for FawryPay, the e-payment platform operated by
 
@@ -12,9 +12,7 @@ info:
 
     `merchantCode` plus a SHA-256 signature computed from the request body and a
 
-    shared `secureKey`.
-
-    '
+    shared `secureKey`.'
   contact:
     name: FawryPay Developer Support
     url: https://developer.fawrystaging.com/contact-us
@@ -40,9 +38,7 @@ paths:
 
         `refundAmount` must not exceed the original payment amount and the
 
-        order must be in a refundable status.
-
-        '
+        order must be in a refundable status.'
       requestBody:
         required: true
         content:
@@ -64,6 +60,26 @@ paths:
                 $ref: '#/components/schemas/Error'
 components:
   schemas:
+    Error:
+      type: object
+      properties:
+        code:
+          type: string
+        description:
+          type: string
+        reason:
+          type: string
+    StatusResponse:
+      type: object
+      properties:
+        type:
+          type: string
+        statusCode:
+          type: integer
+          example: 200
+        statusDescription:
+          type: string
+          example: Operation done successfully
     RefundRequest:
       type: object
       required:
@@ -85,23 +101,3 @@ components:
         signature:
           type: string
           description: SHA-256 of `merchantCode + referenceNumber + refundAmount(2dp) + reason + secureKey`.
-    Error:
-      type: object
-      properties:
-        code:
-          type: string
-        description:
-          type: string
-        reason:
-          type: string
-    StatusResponse:
-      type: object
-      properties:
-        type:
-          type: string
-        statusCode:
-          type: integer
-          example: 200
-        statusDescription:
-          type: string
-          example: Operation done successfully

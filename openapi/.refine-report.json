@@ -1,10 +1,7 @@
 {
   "provider": "fawry",
   "sources": [
-    "fawry-installments-api-openapi.yml",
-    "fawry-orders-api-openapi.yml",
-    "fawry-payments-api-openapi.yml",
-    "fawry-refunds-api-openapi.yml"
+    "_original/fawrypay-server-api-openapi.yml"
   ],
   "outputs": [
     "fawry-installments-api-openapi.yml",
@@ -15,6 +12,15 @@
   "archived": [],
   "errors": [],
   "warnings": [],
-  "notes": [],
-  "skipped": []
+  "notes": [
+    "sourced from openapi/_original/ (1 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "fawrypay-server-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "apis.yml register: already-registered"
+  ],
+  "skipped": [
+    "fawry-installments-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "fawry-orders-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "fawry-payments-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "fawry-refunds-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }

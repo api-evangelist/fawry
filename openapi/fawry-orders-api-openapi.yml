@@ -1,6 +1,6 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: FawryPay Server Installments Orders API
+  title: FawryPay Server Orders API
   version: '1.0'
   description: 'Server-to-server REST API for FawryPay, the e-payment platform operated by
 
@@ -12,9 +12,7 @@ info:
 
     `merchantCode` plus a SHA-256 signature computed from the request body and a
 
-    shared `secureKey`.
-
-    '
+    shared `secureKey`.'
   contact:
     name: FawryPay Developer Support
     url: https://developer.fawrystaging.com/contact-us
@@ -38,9 +36,7 @@ paths:
       summary: Cancel an Unpaid Order
       description: 'Cancel a FawryPay order that has not yet been paid. Use the Refund API
 
-        instead if the order has already been settled.
-
-        '
+        instead if the order has already been settled.'
       requestBody:
         required: true
         content:
@@ -66,9 +62,7 @@ paths:
 
         merchant reference number. Equivalent payload is also delivered via
 
-        the server notification v2 push webhook configured per merchant.
-
-        '
+        the server notification v2 push webhook configured per merchant.'
       parameters:
       - in: query
         name: merchantCode
