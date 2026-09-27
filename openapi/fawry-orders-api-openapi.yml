@@ -98,26 +98,6 @@ components:
           type: string
         reason:
           type: string
-    CancelRequest:
-      type: object
-      required:
-      - merchantAccount
-      - orderRefNo
-      - lang
-      - signature
-      properties:
-        merchantAccount:
-          type: string
-        orderRefNo:
-          type: string
-        lang:
-          type: string
-          enum:
-          - ar-eg
-          - en-gb
-        signature:
-          type: string
-          description: SHA-256 of `orderRefNo + merchantAccount + lang + secureKey`.
     ChargeResponse:
       type: object
       properties:
@@ -156,3 +136,23 @@ components:
           type: integer
         statusDescription:
           type: string
+    CancelRequest:
+      type: object
+      required:
+      - merchantAccount
+      - orderRefNo
+      - lang
+      - signature
+      properties:
+        merchantAccount:
+          type: string
+        orderRefNo:
+          type: string
+        lang:
+          type: string
+          enum:
+          - ar-eg
+          - en-gb
+        signature:
+          type: string
+          description: SHA-256 of `orderRefNo + merchantAccount + lang + secureKey`.
