@@ -62,33 +62,6 @@ paths:
                 $ref: '#/components/schemas/Error'
 components:
   schemas:
-    Error:
-      type: object
-      properties:
-        code:
-          type: string
-        description:
-          type: string
-        reason:
-          type: string
-    ChargeItem:
-      type: object
-      required:
-      - itemId
-      - description
-      - price
-      - quantity
-      properties:
-        itemId:
-          type: string
-        description:
-          type: string
-        price:
-          type: number
-          format: float
-        quantity:
-          type: number
-          format: float
     ChargeRequest:
       type: object
       required:
@@ -155,6 +128,33 @@ components:
         signature:
           type: string
           description: SHA-256 of `merchantCode + merchantRefNum + customerProfileId + paymentMethod + amount(2dp) + secureKey`.
+    Error:
+      type: object
+      properties:
+        code:
+          type: string
+        description:
+          type: string
+        reason:
+          type: string
+    ChargeItem:
+      type: object
+      required:
+      - itemId
+      - description
+      - price
+      - quantity
+      properties:
+        itemId:
+          type: string
+        description:
+          type: string
+        price:
+          type: number
+          format: float
+        quantity:
+          type: number
+          format: float
     ChargeResponse:
       type: object
       properties:
