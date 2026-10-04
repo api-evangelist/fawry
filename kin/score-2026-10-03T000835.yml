@@ -1,21 +1,19 @@
-# Kin Score artifact — fawry — 2026-08-27T094438
+# Kin Score artifact — fawry — 2026-10-03T000835
 # The API Evangelist rating (https://github.com/api-evangelist/kin-score). Generated; do not edit.
 ---
 kin_score:
   slug: fawry
-  schema_version: 0.15.1
-  scored_at: '2026-08-27'
-  run_ts: 2026-08-27T094438
-  composite: 29.4
+  schema_version: 0.23.0
+  scored_at: '2026-10-03'
+  run_ts: 2026-10-03T000835
+  composite: 28.0
   band: thin
   facets:
-    discoverability: 64.8
-    contract_quality: 53.7
-    governance: 0.0
+    discoverability: 57.1
+    contract_quality: 48.6
+    contract_governance: 0.0
     operational_transparency: 2.6
     developer_ergonomics: 50.0
-    commercial_clarity: 13.2
-    contract_governance: 0.0
     access_clarity: 13.2
   agent_readiness:
     score: 17.7
@@ -44,7 +42,7 @@ kin_score:
     applies: true
     regime: Payments
     regime_id: payments
-    score: 9.4
+    score: 5.4
     matched_via: tags
   provenance:
     agentic_access: derived
