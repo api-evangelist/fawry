@@ -89,6 +89,15 @@ paths:
                 $ref: '#/components/schemas/ChargeResponse'
 components:
   schemas:
+    Error:
+      type: object
+      properties:
+        code:
+          type: string
+        description:
+          type: string
+        reason:
+          type: string
     ChargeResponse:
       type: object
       properties:
@@ -126,15 +135,6 @@ components:
         statusCode:
           type: integer
         statusDescription:
-          type: string
-    Error:
-      type: object
-      properties:
-        code:
-          type: string
-        description:
-          type: string
-        reason:
           type: string
     CancelRequest:
       type: object

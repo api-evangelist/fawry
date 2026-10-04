@@ -62,6 +62,24 @@ paths:
                 $ref: '#/components/schemas/Error'
 components:
   schemas:
+    ChargeItem:
+      type: object
+      required:
+      - itemId
+      - description
+      - price
+      - quantity
+      properties:
+        itemId:
+          type: string
+        description:
+          type: string
+        price:
+          type: number
+          format: float
+        quantity:
+          type: number
+          format: float
     ChargeRequest:
       type: object
       required:
@@ -137,24 +155,6 @@ components:
           type: string
         reason:
           type: string
-    ChargeItem:
-      type: object
-      required:
-      - itemId
-      - description
-      - price
-      - quantity
-      properties:
-        itemId:
-          type: string
-        description:
-          type: string
-        price:
-          type: number
-          format: float
-        quantity:
-          type: number
-          format: float
     ChargeResponse:
       type: object
       properties:
