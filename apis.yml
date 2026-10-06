@@ -85,7 +85,7 @@ tags_raw:
   - WooCommerce
   - MENA
 created: '2026-05-24'
-modified: '2026-05-24'
+modified: '2026-10-06'
 specificationVersion: '0.23'
 apis:
 - aid: fawry:fawry-installments-api
@@ -167,6 +167,10 @@ apis:
   - type: Documentation
     url: https://developer.fawrystaging.com/docs/server-apis/auth-capture-payment-apis
 common:
+  - url: https://www.fawry.com/about/news/
+    type: Blog
+  - url: https://www.fawry.com/feed/
+    type: BlogRSS
   - type: CapabilityMap
     url: capabilities/fawry-capability-edges.yml
     name: Fawry Business Capability Map
