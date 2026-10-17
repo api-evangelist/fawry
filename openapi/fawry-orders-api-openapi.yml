@@ -89,15 +89,6 @@ paths:
                 $ref: '#/components/schemas/ChargeResponse'
 components:
   schemas:
-    Error:
-      type: object
-      properties:
-        code:
-          type: string
-        description:
-          type: string
-        reason:
-          type: string
     ChargeResponse:
       type: object
       properties:
@@ -156,3 +147,12 @@ components:
         signature:
           type: string
           description: SHA-256 of `orderRefNo + merchantAccount + lang + secureKey`.
+    Error:
+      type: object
+      properties:
+        code:
+          type: string
+        description:
+          type: string
+        reason:
+          type: string
