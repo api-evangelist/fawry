@@ -1,4 +1,4 @@
-# Fawry (fawry)
+# Fawry
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -66,109 +66,105 @@
 
 Fawry is Cairo-based Egypt's leading provider of e-payments and digital finance solutions, operating a nationwide network for card, e-wallet, and cash-based bill, merchant, government, and education payments. The FawryPay acceptance platform exposes a server-to-server REST API plus native Android, iOS, Flutter, and React Native SDKs and certified plugins for Magento, Shopify, and WooCommerce that let merchants charge cards (including 3DS), e-wallets, ValU, and bank installments, generate FawryPay reference numbers payable across more than 250,000 Fawry POS locations and partner channels, issue refunds, cancel unpaid orders, and reconcile via signed server notifications. Fawry also offers consumer products (myfawry super app, yellowcard prepaid card, FawryPlus, TicketsMall), enterprise and SME acceptance, pay-out, micro-finance, and consumer-finance services. Fawry is publicly listed on the Egyptian Exchange as FWRY.CA.
 
-**APIs.json:** [https://raw.githubusercontent.com/api-evangelist/fawry/refs/heads/main/apis.yml](https://raw.githubusercontent.com/api-evangelist/fawry/refs/heads/main/apis.yml)
+**Areas:** Payments · E-Payments · Digital Finance · Fintech · Egypt · Cards · Wallets · Bill Payments · Point-of-Sale · Microfinance · Installments · 3D Secure
 
-## Scope
+## Fawry on APIs.io
 
-- **Type:** Index
-- **Position:** Provider
-- **Access:** 3rd-Party
+Everything profiled for Fawry is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/fawry/](https://apis.io/providers/fawry/)** — or go straight to one of the APIs or properties below.
 
-## Tags
+### APIs (4)
 
-- Payments
-- E-Payments
-- Digital Finance
-- Fintech
-- Egypt
-- Cards
-- Wallets
-- Bill Payments
-- POS
-- Micro-Finance
-- Installments
-- 3D Secure
-- Refunds
-- Webhooks
-- Mobile SDK
-- E-Commerce Plugins
-- Magento
-- Shopify
-- WooCommerce
+- [Fawry Installments API](https://apis.io/apis/fawry/fawry-installments-api/) — Bank installment plans available for a merchant.
+- [Fawry Orders API](https://apis.io/apis/fawry/fawry-orders-api/) — Inspect or cancel FawryPay orders.
+- [Fawry Payments API](https://apis.io/apis/fawry/fawry-payments-api/) — Create payment requests and charge cards or wallets.
+- [Fawry Refunds API](https://apis.io/apis/fawry/fawry-refunds-api/) — Refund settled FawryPay orders.
 
-## Timestamps
+### Published properties
 
-- **Created:** 2026-05-24
-- **Modified:** 2026-05-24
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-## APIs
+#### Agentic access (1)
 
-### FawryPay Server API
+Which operations an agent can call, which act, and which need a human in the loop.
 
-Server-to-server REST API for creating FawryPay charges (card, 3DS, e-wallet, ValU, bank installments, PayAtFawry reference numbers), issuing refunds, cancelling unpaid orders, querying payment status, and listing bank installment plans. Authenticated per request via a merchant code and SHA-256 signature over the request body and a shared secureKey.
+- [Fawry Agentic Access](https://apis.io/agentic-access/fawry/fawry-agentic-access/)
 
-- **Human URL:** [https://developer.fawrystaging.com/docs/server-apis/server-apis-overview](https://developer.fawrystaging.com/docs/server-apis/server-apis-overview)
+#### Collections (5)
 
-#### Tags
+Postman and Open Collection request collections.
 
-- Payments
-- Refunds
-- Installments
-- E-Commerce
+- [FawryPay Server Installments API](https://apis.io/collections/fawry/open-fawry-installments-api/)
+- [FawryPay Server Installments Orders API](https://apis.io/collections/fawry/open-fawry-orders-api/)
+- [FawryPay Server Installments Payments API](https://apis.io/collections/fawry/open-fawry-payments-api/)
+- [FawryPay Server Installments Refunds API](https://apis.io/collections/fawry/open-fawry-refunds-api/)
+- [FawryPay Server API](https://apis.io/collections/fawry/open-fawrypay-server-api/)
 
-#### Properties
+#### Security (1)
 
-- [Documentation](https://developer.fawrystaging.com/docs/server-apis/server-apis-overview)
-- [Documentation](https://developer.fawrystaging.com/docs/server-apis/create-payment-refno-apis)
-- [Documentation](https://developer.fawrystaging.com/docs/server-apis/refund-issue-api)
-- [Documentation](https://developer.fawrystaging.com/docs/server-apis/cancel-payment-api)
-- [Documentation](https://developer.fawrystaging.com/docs/server-apis/auth-capture-payment-apis)
-- [OpenAPI](openapi/fawrypay-server-api-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/fawrypay-server-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/fawrypay-server-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+Authentication, trust centre, and vulnerability disclosure.
 
-## Common Properties
+- [Fawry Domain Security](https://apis.io/security/fawry/fawry-domain-security/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
 
 - [Website](https://fawry.com/)
-- [Portal](https://developer.fawrystaging.com/)
-- [Getting Started](https://developer.fawrystaging.com/docs/get-started)
 - [Documentation](https://developer.fawrystaging.com/docs-home)
-- [Documentation](https://developer.fawrystaging.com/docs/server-apis/server-apis-overview)
-- [Documentation](https://developer.fawrystaging.com/docs/sdks/sdks-overview)
-- [Plugins](https://developer.fawrystaging.com/docs/plugins/plugins-overview)
-- [Documentation](https://developer.fawrystaging.com/docs/express-checkout/checkout-integration-overview)
-- [Documentation](https://developer.fawrystaging.com/docs/pay-by-link-overview)
-- [Sign Up](https://fawrypay.online/merchant/register)
+- [Getting started](https://developer.fawrystaging.com/docs/get-started)
 - [Support](https://developer.fawrystaging.com/contact-us)
-- [Support](https://developer.fawrystaging.com/ticket-tracking)
-- [GitHub Organization](https://github.com/FawryPay)
-- [SDK](https://github.com/FawryPay/FawryPaySDK)
-- [SDK](https://github.com/FawryPay/FawryPaySPM)
-- [SDK](https://github.com/FawryPay/FawryPaySDK-AVL)
-- [SDK](https://github.com/FawryPay/FawryPayAVLSPM)
-- [SDK](https://github.com/FawryPay/FawryPaySDK-Registered)
-- [SDK](https://github.com/FawryPay/FawryPaySDK-Microfinance)
-- [Code Examples](https://github.com/FawryPay/Android-Fawrypay-Anonymous-sample)
-- [Code Examples](https://github.com/FawryPay/Android-Fawrypay-AVL-sample)
-- [Code Examples](https://github.com/FawryPay/iOS-Fawrypay-Anonymous-sample)
-- [Code Examples](https://github.com/FawryPay/IOS-Fawrypay-AVL-Sample)
-- [Code Examples](https://github.com/FawryPay/Flutter-Fawrypay-Anonymous-sample)
-- [Code Examples](https://github.com/FawryPay/Flutter-Fawry-NFC-Sample)
-- [Code Examples](https://github.com/FawryPay/ReactNative-Fawrypay-Anonymous-sample)
-- [Code Examples](https://github.com/FawryPay/ReactNative-Fawrypay-Registered-Sample)
-- [Product](https://www.fawry.com/business/acceptance/online-checkout/)
-- [Product](https://www.fawry.com/business/acceptance/payment-link/)
-- [Product](https://fawry.com/business/pay-out/)
-- [Product](https://www.fawry.com/fawry-for-business/smes/commerce-enablement/)
-- [Product](https://www.fawry.com/consumer/myfawry-app/)
-- [Product](https://www.fawry.com/consumer/bill-payment/)
-- [Investor Relations](https://fawry.com/investor-relations/)
-- [Twitter](https://twitter.com/fawry)
-- [LinkedIn](https://www.linkedin.com/company/fawry)
-- [YouTube](https://www.youtube.com/@FawryEgypt)
-- [Features](undefined)
+- [Blog](https://www.fawry.com/about/news/)
+- [GitHub](https://github.com/FawryPay)
 
-## Maintainers
+## API Evangelist rating
 
-**FN:** Kin Lane
-**Email:** kin@apievangelist.com
+**Kin Score 28.5** — thin · rubric 0.24.0 · scored 2026-10-17
+
+| Facet | Score |
+|---|---|
+| Discoverability | 57.1 |
+| Contract quality | 48.6 |
+| Contract governance | 0.0 |
+| Operational transparency | 2.6 |
+| Developer ergonomics | 52.4 |
+| Access clarity | 13.2 |
+
+**Agent readiness 17.7** — agent-aware
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | documented (partial credit) |
+| MCP Server | — |
+| Auth Clarity | — |
+| Idempotency | — |
+| Error Semantics | — |
+| OpenAPI Examples | documented (partial credit) |
+| Rate Limit Signal | — |
+| Event Surface Described | — |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+
+**Regulatory alignment 5.4** — Payments
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/fawry/](https://apis.io/providers/fawry/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Fawry: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/fawry/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
